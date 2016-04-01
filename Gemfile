@@ -29,6 +29,9 @@ gem 'rails_12factor', group: :production
 # Add puma for server
 gem 'puma'
 
+# Add twitter gem for accessing Twitter API
+gem 'twitter'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
