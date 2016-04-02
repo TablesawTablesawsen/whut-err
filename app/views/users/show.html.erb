@@ -1,3 +1,4 @@
+<%= image_tag(@user.profile_image_uri(:original), alt: @user.name, size: "200x200") %>
 <h1><%= @user.name %> </h1>
 <% @timeline.each do |tweet| %>
   <p><%= tweet.text %> | <%= tweet.created_at %></p>
