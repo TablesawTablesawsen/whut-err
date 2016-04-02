@@ -36,3 +36,6 @@ bower.json
 
 # Hide direnv settings
 .envrc
+
+# Hide byebug settings
+.byebug_history
