@@ -3,12 +3,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = ENV["YOUR_CONSUMER_KEY"]
-      config.consumer_secret     = ENV["YOUR_CONSUMER_SECRET"]
-    end
+    @client = CachingClient.new
     @user = @client.user(params[:id])
     @timeline = @client.user_timeline(params[:id])
-
   end
 end
