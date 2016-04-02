@@ -1,5 +1,5 @@
 <%= image_tag(@user.profile_image_uri(:original), alt: @user.name, size: "200x200") %>
 <h1><%= @user.name %> </h1>
 <% @timeline.each do |tweet| %>
-  <p><%= sanitize text_with_user_mentions(tweet) %> | <%= tweet.created_at %></p>
+  <p><%= text_with_user_mentions(tweet) %> | <%= tweet.created_at %></p>
 <% end %>
