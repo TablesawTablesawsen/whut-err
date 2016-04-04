@@ -6,15 +6,9 @@ class CachingClient
     end
   end
 
-  def user(id)
-    Rails.cache.fetch("user/" + id, expires_in: 5.minutes) do
-      @client.user(id)
-    end
-  end
-
-  def user_timeline(id)
-    Rails.cache.fetch("user_timeline/" + id, expires_in: 5.minutes) do
-      @client.user_timeline(id)
+  def method_missing(m, *args, &block)
+    Rails.cache.fetch(m.to_s + args.to_s, expires_in: 5.minutes) do
+      @client.send(m, *args, &block)
     end
   end
 end

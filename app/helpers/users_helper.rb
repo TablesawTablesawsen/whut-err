@@ -1,7 +1,7 @@
 module UsersHelper
 
   def text_with_user_mentions (tweet)
-    text_with_mentions = tweet.full_text.dup
+    text_with_mentions = sanitize(tweet.full_text.dup)
     if tweet.user_mentions?
       tweet.user_mentions.reverse_each do |mention|
         user = @client.user(mention.screen_name)
@@ -22,8 +22,6 @@ module UsersHelper
           )
       end
     end
-    # relies on twitter's API providing HTML safe text, I can't find great
-    # information on that
-    text_with_mentions.html_safe
+    text_with_mentions
   end
 end
