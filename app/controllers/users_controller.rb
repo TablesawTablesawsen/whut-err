@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-  def index
-  end
-
   def show
     @client = CachingClient.new
     @user = @client.user(params[:id])
