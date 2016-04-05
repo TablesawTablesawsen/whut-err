@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <% if tweet.retweet? %>
+    <div class="panel-heading">
+      Retweeting
+      <%= link_to "@" + tweet.retweeted_status.user.screen_name,
+            user_path(tweet.retweeted_status.user.screen_name) %>
+    </div>
+  <% end %>
+  <div class="panel-body">
+    <%= text_with_user_mentions(tweet) %>
+  </div>
+  <div class="panel-footer text-right">
+    <%= time_ago_in_words(tweet.created_at) %> ago
+  </div>
+</div>
