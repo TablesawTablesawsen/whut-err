@@ -7,7 +7,7 @@ module UsersHelper
     if tweet.user_mentions?
       tweet.user_mentions.reverse_each do |mention|
         user = @client.user(mention.screen_name)
-        mention_range = mention.indices[0]..mention.indices[0] + user.screen_name.length
+        mention_range = mention.indices[0]...mention.indices[1]
         text_with_mentions[mention_range] = link_to(
           text_with_mentions[mention_range],
           user_path(mention.screen_name),
