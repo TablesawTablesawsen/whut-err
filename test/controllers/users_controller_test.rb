@@ -1,26 +1,25 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  test "can get show" do
-    test_name = "test_user"
-    client = mock_client(test_name)
+  def setup
+    @test_name = "test_user"
+    @client = mock_client(@test_name)
+  end
 
-    CachingClient.stub :new, client do
-      get :show, id: test_name
+  test "can get show" do
+    CachingClient.stub :new, @client do
+      get :show, id: @test_name
     end
 
     assert_response :success
   end
 
   test "can search for user" do
-    test_name = "test_user"
-    client = mock_client(test_name)
-
-    CachingClient.stub :new, client do
-      get :show, id: "other_user", screenname: test_name
+    CachingClient.stub :new, @client do
+      get :show, id: "other_user", screenname: @test_name
     end
 
-    assert_redirected_to controller: "users", action: "show", id: test_name
+    assert_redirected_to controller: "users", action: "show", id: @test_name
   end
 
   private
