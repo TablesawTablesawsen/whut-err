@@ -3,5 +3,17 @@
     <div class="navbar-header">
       <%= link_to "WHUT!? err...", root_path, class: "navbar-brand" %>
     </div>
+    <div class="navbar-right">
+      <%= form_tag(user_path, method: "get", class: "navbar-form", id: "search-form") do %>
+        <div class="input-group">
+          <%= search_field_tag :screenname, nil, class: "form-control", placeholder: "screenname" %>
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+              <span class='glyphicon glyphicon-search' aria-hidden='true'></span>
+            </button>
+          </span>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
