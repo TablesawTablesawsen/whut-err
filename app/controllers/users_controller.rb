@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     if params[:screenname]
-      redirect_to user_path(params[:screenname])
+      return redirect_to user_path(params[:screenname])
     end
 
     @client = CachingClient.new
